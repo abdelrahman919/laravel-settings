@@ -1,26 +1,28 @@
 <?php 
-namespace Hamada\Settings;
+namespace src;
 
 use App\Hamada\Settings\Commands\SeedSettingsCommand;
 use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-    private string $basePackageName = 'laravel-settings';
+    private static string $publishablePath = __DIR__.'/../Publishable/';
+    private string $appPath =  __DIR__.'/../Publishable/' . 'App/';
+    private string $databasePath = __DIR__.'/../Publishable/' . 'Database/';
     public function boot()
     {
         // Publish migration & config
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/Database/migrations/' => database_path('migrations'),
+                $this->databasePath.'migrations/' => database_path('migrations'),
             ], 'migrations');
 
             $this->publishes([
-                __DIR__.'/Database/Seeders/' => database_path('Seeders'),
+                $this->databasePath.'Seeders/' => database_path('Seeders'),
             ], 'seeders');
 
             $this->publishes([
-                __DIR__.'/Publisable/App/' => app_path(),
+                $this->appPath => app_path(),
             ], 'settings');
 
         /*  $this->publishes([
