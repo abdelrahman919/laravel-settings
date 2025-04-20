@@ -5,8 +5,9 @@ namespace Database\Seeders;
 
 use App\Hamada\Settings\Models\Setting;
 use App\Hamada\Settings\Factories\SettingsConfigFactory;
+use Illuminate\Database\Seeder;
 
-class SettingsSeeder
+class SettingsSeeder extends Seeder
 {
     public function run()
     {
