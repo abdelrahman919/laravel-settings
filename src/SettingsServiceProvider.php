@@ -6,9 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-    // private static string $publishablePath = __DIR__.'/../Publishable/';
     private string $appPath =  __DIR__.'/../App/';
-    private string $databasePath = __DIR__.'/../Publishable/' . 'Database/';
+    private string $databasePath = __DIR__.'/../Database/';
+
     public function boot()
     {
         // Publish migration & config
@@ -24,26 +24,11 @@ class SettingsServiceProvider extends ServiceProvider
             $this->publishes([
                 $this->appPath => app_path(),
             ], 'settings');
-
-        /*  $this->publishes([
-                __DIR__.'/Config/settings.php' => app_path('settings.php'),
-            ], 'config'); */
-
-/*             $this->publishes([
-                __DIR__.'/Config/settings.php' => app_path('settings.php'),
-            ], 'config'); */
-
-/*             $this->commands([
-                SeedSettingsCommand::class,
-            ]); */
         }
 
-        // Merge config
-        // $this->mergeConfigFrom(__DIR__.'/Config/settings.php', 'settings');
+        // Load routes
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+
     }
 
-/*     public function register()
-    {
-        $this->app->bind(SettingStoreInterface::class, DbSettingStore::class);
-    } */
 }
