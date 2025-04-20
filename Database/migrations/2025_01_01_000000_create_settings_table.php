@@ -28,12 +28,4 @@ class CreateSettingsTable extends Migration
     }
 }
 
-/* private SettingsKeys $key;
-private string $defaultValue;
-private string $authority;
-private string $group;
-private string $description;
-private string $type;
-private string $validationRules; */
-
 
