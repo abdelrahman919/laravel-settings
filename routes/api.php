@@ -8,3 +8,9 @@ Route::prefix('api')
     ->group(function () {
         Route::get('/settings', [SettingsController::class, 'index']);
     });
+
+Route::prefix('api')
+    ->middleware('api')
+    ->group(function () {
+        Route::put('/settings/{setting}', [SettingsController::class, 'update']);
+    });
