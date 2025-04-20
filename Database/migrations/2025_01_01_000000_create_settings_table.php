@@ -1,6 +1,5 @@
 <?php
 
-use App\Hamada\Settings\Enums\SettingsKeys;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,7 +10,7 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->enum('key', SettingsKeys::getValues())->unique();
+            $table->string('key')->unique();
             $table->json('value')->nullable();
             $table->string('authority')->nullable();
             $table->string('type')->nullable();
