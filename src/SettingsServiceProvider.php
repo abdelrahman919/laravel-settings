@@ -33,9 +33,9 @@ class SettingsServiceProvider extends ServiceProvider
                 __DIR__.'/Config/settings.php' => app_path('settings.php'),
             ], 'config'); */
 
-            $this->commands([
+/*             $this->commands([
                 SeedSettingsCommand::class,
-            ]);
+            ]); */
         }
 
         // Merge config
