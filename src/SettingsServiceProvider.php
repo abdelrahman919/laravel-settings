@@ -1,13 +1,13 @@
 <?php 
-namespace src;
+namespace Hamada\Settings;
 
 use App\Hamada\Settings\Commands\SeedSettingsCommand;
 use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-    private static string $publishablePath = __DIR__.'/../Publishable/';
-    private string $appPath =  __DIR__.'/../Publishable/' . 'App/';
+    // private static string $publishablePath = __DIR__.'/../Publishable/';
+    private string $appPath =  __DIR__.'/../App/';
     private string $databasePath = __DIR__.'/../Publishable/' . 'Database/';
     public function boot()
     {

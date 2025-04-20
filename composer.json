@@ -3,13 +3,13 @@
     "description": "A package for managing app settings with enums, defaults, and database storage",
     "autoload": {
       "psr-4": {
-        "App\\Hamada\\Settings\\": "Publishable/App/Hamada/Settings/"
+        "Hamada\\Settings\\": "src/"
       }
     },
     "extra": {
       "laravel": {
         "providers": [
-          "laravel-settings\\src\\SettingsServiceProvider"
+          "Hamada\\Settings\\SettingsServiceProvider"
         ],
         "aliases": {
           "Settings": "Hamada\\Settings\\Facades\\Settings"
