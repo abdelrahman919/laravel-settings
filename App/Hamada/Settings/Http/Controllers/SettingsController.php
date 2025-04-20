@@ -4,6 +4,7 @@ namespace App\Hamada\Settings\Http\Controllers;
 
 use App\Hamada\Settings\Http\Requests\UpdateSettingsRequest;
 use App\Hamada\Settings\Models\Setting;
+use App\Http\Controllers\Controller;
 
 
 
