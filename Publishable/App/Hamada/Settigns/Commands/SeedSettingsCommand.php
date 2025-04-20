@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Hamada\Settings\Commnads;
+namespace App\Hamada\Settings\Commands;
 
 use Database\Seeders\SettingsSeeder;
 use Illuminate\Console\Command;
