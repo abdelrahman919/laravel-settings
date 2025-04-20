@@ -1,7 +1,7 @@
 <?php 
 namespace Hamada\Settings;
 
-use App\Hamada\Settings\Commnads\SeedSettingsCommand;
+use App\Hamada\Settings\Commands\SeedSettingsCommand;
 use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
