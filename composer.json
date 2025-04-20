@@ -9,7 +9,7 @@
     "extra": {
       "laravel": {
         "providers": [
-          "src\\SettingsServiceProvider"
+          "laravel-settings\\src\\SettingsServiceProvider"
         ],
         "aliases": {
           "Settings": "Hamada\\Settings\\Facades\\Settings"
