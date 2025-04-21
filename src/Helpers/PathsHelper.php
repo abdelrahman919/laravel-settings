@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace Hamada\Settings\Helpers;
 
 
@@ -9,29 +10,21 @@ namespace Hamada\Settings\Helpers;
  * A helper class that provides utility methods for handling and managing file paths
  * within the Laravel settings package.
  */
-class PathsHelper{
-
-    // Store the migration file name to be later used for uninstallation etc.
-    private static string $migrationFileName = '';
+class PathsHelper
+{
 
     public static function createMigrationFileName(): string
     {
-/*         $fileName = date('Y_m_d_His', time()) . '_create_settings_table.php';
-        self::$migrationFileName = $fileName; */
+        // Generate a timestamp for the migration file name
         $timestamp = now()->format('Y_m_d_His');
-        $fileName = $timestamp . '_create_settings_table.php'; 
-        self::$migrationFileName = $fileName; // Store the filename for later use
-        return self::$migrationFileName;
+        $fileName = $timestamp . '_create_settings_table.php';
+        return $fileName;
     }
 
-    public static function getMigrationFileName(): string
-    {
-        return self::$migrationFileName;
-    }
 
     public static function getPublishedDirsPaths(): array
     {
-        return[
+        return [
             'app/Hamada'
         ];
     }
@@ -40,9 +33,23 @@ class PathsHelper{
     {
         return [
             'database/Seeders/SettingsSeeder.php',
-            'database/migrations/' . self::getMigrationFileName(),
+            'database/migrations/' . self::getPublishedMigration(),
         ];
     }
 
+    public static function getPublishedMigration(): ?string
+    {
+        $migrationDirectory = database_path('migrations');
 
+        // Get the list of migration files in the migrations directory
+        $migrationFiles = File::files($migrationDirectory);
+
+        // Optionally, filter the files to find the migration file you just published
+        $publishedMigration = collect($migrationFiles)->filter(function ($file) {
+            return strpos($file->getFilename(), 'create_settings_table') !== false;
+        })->first();
+
+        // Return the name of the published migration
+        return $publishedMigration ? $publishedMigration->getFilename() : null;
+    }
 }

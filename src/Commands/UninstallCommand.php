@@ -22,7 +22,7 @@ class UninstallCommand extends Command
         // Rollback migrations (optional)
         if ($this->option('rollback')) {
             // Check if the settings table exists before rolling back
-            $migrationName = PathsHelper::getMigrationFileName();
+            $migrationName = PathsHelper::getPublishedMigration();
             if($migrationName) {
                 $this->call('migrate:rollback', ['--path' => "database/migrations/$migrationName"]);
             } else {
