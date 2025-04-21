@@ -19,9 +19,10 @@ class SettingsServiceProvider extends ServiceProvider
     {
         // Publish migration & config
         if ($this->app->runningInConsole()) {
+            $filename = PathsHelper::createMigrationFileName();
+
             $this->publishes([
-                $this->migrationsPath =>
-                database_path('migrations/' . PathsHelper::createMigrationFileName()),
+                $this->migrationsPath => database_path('migrations/' . $filename),
             ], 'migrations');
 
             $this->publishes([
