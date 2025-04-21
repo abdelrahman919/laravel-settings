@@ -2,8 +2,8 @@
 
 namespace Hamada\Settings\Services;
 
-use App\Hamada\Settings\Enums\SettingsKeys;
 use Hamada\Settings\Models\Setting;
+use Illuminate\Support\Collection;
 
 class SettingsService
 {
@@ -37,7 +37,7 @@ class SettingsService
      * @param string|null $group The group of settings to filter by, or null to retrieve all settings.
      * @return \Illuminate\Database\Eloquent\Collection|Setting[] A collection of settings.
      */
-    public function getAllSettings(?string $group = null): array
+    public function getAllSettings(?string $group = null): Collection
     {
         $settings = $group 
         ? Setting::where('group', $group)->get() 
