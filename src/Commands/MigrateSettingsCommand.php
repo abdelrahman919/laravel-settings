@@ -18,7 +18,7 @@ class MigrateSettingsCommand extends Command
         }
 
         $this->call('migrate', [
-            '--path' => database_path('migrations') . $migration, 
+            '--path' => database_path('migrations/') . $migration, 
             '--realpath' => true
         ]);
     }
