@@ -51,8 +51,8 @@ class UninstallCommand extends Command
         }
 
         // Optional: run composer remove (only works in interactive shells)
-        if ($this->confirm('Do you want to run composer remove your-vendor/your-package?')) {
-            exec('composer remove your-vendor/your-package');
+        if ($this->confirm('Do you want to run composer remove abdelrahman919/laravel-settings?')) {
+            exec('composer remove abdelrahman919/laravel-settings');
         }
 
         $this->info('Package uninstalled successfully.');
