@@ -22,7 +22,7 @@ class SettingsServiceProvider extends ServiceProvider
             $filename = PathsHelper::createMigrationFileName();
 
             $this->publishes([
-                $this->migrationsPath => database_path('migrations/' . $filename),
+                $this->migrationsPath . '2025_01_01_000000_create_settings_table.php' => database_path('migrations/' . $filename),
             ], 'migrations');
 
             $this->publishes([
