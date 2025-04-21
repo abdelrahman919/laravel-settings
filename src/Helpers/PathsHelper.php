@@ -13,6 +13,7 @@ class PathsHelper{
 
     // Store the migration file name to be later used for uninstallation etc.
     private static string $migrationFileName = '';
+    private static string $BaseDir = 'laravel-settings/';
 
 
     public static function createMigrationFileName(): string
@@ -29,12 +30,12 @@ class PathsHelper{
 
     public static function getPackageAppPath(): string
     {
-        return __DIR__ . '/../App/';
+        return self::$BaseDir . 'App/';
     }
 
     private static function getDatabasePath(): string
     {
-        return __DIR__ . '/../Database/';
+        return self::$BaseDir  . 'Database/';
     }
 
     public static function getMigrationsPath(): string
@@ -49,7 +50,7 @@ class PathsHelper{
 
     public static function getRoutesPath(): string
     {
-        return __DIR__ . '/../routes/api.php';
+        return self::$BaseDir  . 'routes/api.php';
     }
 
     public static function getPublishedDirsPaths(): array
