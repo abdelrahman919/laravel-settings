@@ -9,26 +9,32 @@ use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
+
+    protected $migrationsPath = __DIR__ . '/../database/migrations/';
+    protected $seedersPath = __DIR__ . '/../database/seeders/';
+    protected $routesPath = __DIR__ . '/../routes/api.php';
+    protected $appPath = __DIR__ . '/../App/';
+
     public function boot()
     {
         // Publish migration & config
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                PathsHelper::getMigrationsPath() =>
+                $this->migrationsPath =>
                 database_path('migrations/' . PathsHelper::createMigrationFileName()),
             ], 'migrations');
 
             $this->publishes([
-                PathsHelper::getSeedersPath() => database_path('Seeders'),
+                $this->seedersPath => database_path('Seeders'),
             ], 'seeders');
 
             $this->publishes([
-                PathsHelper::getPackageAppPath() => app_path(),
+                $this->appPath => app_path(),
             ], 'settings');
         }
 
         // Load routes
-        $this->loadRoutesFrom(PathsHelper::getRoutesPath());
+        $this->loadRoutesFrom($this->routesPath);
     }
 
     public function register()
