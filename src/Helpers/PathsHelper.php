@@ -2,6 +2,8 @@
 
 namespace Hamada\Settings\Helpers;
 
+use Illuminate\Support\Facades\File;
+
 
 
 /**
