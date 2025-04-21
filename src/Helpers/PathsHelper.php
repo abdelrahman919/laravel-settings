@@ -34,7 +34,7 @@ class PathsHelper
     public static function getPublishedFilesPaths(): array
     {
         return [
-            'database/Seeders/SettingsSeeder.php',
+            'database/seeders/SettingsSeeder.php',
             'database/migrations/' . self::getPublishedMigration(),
         ];
     }
