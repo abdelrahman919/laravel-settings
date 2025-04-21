@@ -4,6 +4,7 @@ namespace Hamada\Settings;
 
 use Hamada\Settings\Commands\MigrateSettingsCommand;
 use Hamada\Settings\Commands\SeedSettingsCommand;
+use Hamada\Settings\Commands\SettingsPublishCommand;
 use Hamada\Settings\Commands\UninstallCommand;
 use Hamada\Settings\Helpers\PathsHelper;
 use Hamada\Settings\Services\SettingsService;
@@ -51,6 +52,7 @@ class SettingsServiceProvider extends ServiceProvider
                 UninstallCommand::class,
                 MigrateSettingsCommand::class,
                 SeedSettingsCommand::class,
+                SettingsPublishCommand::class,
             ]);
         }
     }
