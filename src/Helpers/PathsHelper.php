@@ -16,8 +16,11 @@ class PathsHelper{
 
     public static function createMigrationFileName(): string
     {
-        $fileName = date('Y_m_d_His', time()) . '_create_settings_table.php';
-        self::$migrationFileName = $fileName;
+/*         $fileName = date('Y_m_d_His', time()) . '_create_settings_table.php';
+        self::$migrationFileName = $fileName; */
+        $timestamp = now()->format('Y_m_d_His');
+        $fileName = $timestamp . '_create_settings_table.php'; 
+        self::$migrationFileName = $fileName; // Store the filename for later use
         return $fileName;
     }
 
