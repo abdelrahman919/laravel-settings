@@ -14,3 +14,9 @@ Route::prefix('api')
     ->group(function () {
         Route::put('/settings/{setting}', [SettingsController::class, 'update']);
     });
+
+Route::prefix('api')
+    ->middleware('api')
+    ->group(function () {
+        Route::get('/settings/{key}', [SettingsController::class, 'showByKey']);
+    });
