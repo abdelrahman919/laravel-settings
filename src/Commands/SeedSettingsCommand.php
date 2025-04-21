@@ -4,7 +4,7 @@ namespace Hamada\Settings\Commands;
 use Illuminate\Console\Command;
 use Database\Seeders\SettingsSeeder;
 
-class SeedSettingsTable extends Command
+class SeedSettingsCommand extends Command
 {
     protected $signature = 'settings:seed';
     protected $description = 'Seed the settings table with default values';

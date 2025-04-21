@@ -4,7 +4,7 @@ namespace Hamada\Settings\Commands;
 use Hamada\Settings\Helpers\PathsHelper;
 use Illuminate\Console\Command;
 
-class MigrateSettingsTable extends Command
+class MigrateSettingsCommand extends Command
 {
     protected $signature = 'settings:migrate';
     protected $description = 'Run the migration for the settings table';

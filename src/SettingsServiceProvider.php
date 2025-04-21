@@ -2,6 +2,8 @@
 
 namespace Hamada\Settings;
 
+use Hamada\Settings\Commands\MigrateSettingsCommand;
+use Hamada\Settings\Commands\SeedSettingsCommand;
 use Hamada\Settings\Commands\UninstallCommand;
 use Hamada\Settings\Helpers\PathsHelper;
 use Hamada\Settings\Services\SettingsService;
@@ -47,6 +49,8 @@ class SettingsServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 UninstallCommand::class,
+                MigrateSettingsCommand::class,
+                SeedSettingsCommand::class,
             ]);
         }
     }
