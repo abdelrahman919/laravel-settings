@@ -13,7 +13,7 @@ class MigrateSettingsCommand extends Command
     {
         $migration = PathsHelper::getPublishedMigration();
         if(!$migration) {
-            $this->error('Migration file not found, please publish the package first.');
+            $this->error("Migration file not found, please publish the package first.\n php artisan settings:publish");
             return;
         }
 
