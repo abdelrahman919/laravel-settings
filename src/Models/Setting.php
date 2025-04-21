@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Hamada\Settings\Models;
+namespace Hamada\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

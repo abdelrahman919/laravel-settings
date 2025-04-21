@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace Database\Seeders;
 
 
-use App\Hamada\Settings\Models\Setting;
+use Hamada\Settings\Models\Setting;
 use App\Hamada\Settings\Factories\SettingsConfigFactory;
 use Illuminate\Database\Seeder;
 
@@ -21,16 +21,19 @@ class SettingsSeeder extends Seeder
     {
         $settings = SettingsConfigFactory::getDefaults();
 
+        // Look up by key and update or create each setting in the database
         foreach ($settings as $setting) {
-            Setting::updateOrCreate([
-                'key' => $setting->Key,
-                'value' => ['value' => $setting->value],
-                'authority' => $setting->authority,
-                'group' => $setting->group,
-                'description' => $setting->description,
-                'type' => $setting->type,
-                'validation_rules' => $setting->validation_rules,
-            ]);
+            Setting::updateOrCreate(
+                ['key' => $setting->key],
+                [
+                    'value' => ['value' => $setting->value],
+                    'authority' => $setting->authority,
+                    'group' => $setting->group,
+                    'description' => $setting->description,
+                    'type' => $setting->type,
+                    'validation_rules' => $setting->validation_rules,
+                ]
+            );
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Hamada\Settings\Http\Requests;
 
-use App\Hamada\Settings\Models\Setting;
+use Hamada\Settings\Models\Setting;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**

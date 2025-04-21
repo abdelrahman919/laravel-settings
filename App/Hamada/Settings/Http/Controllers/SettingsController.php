@@ -3,7 +3,7 @@
 namespace App\Hamada\Settings\Http\Controllers;
 
 use App\Hamada\Settings\Http\Requests\UpdateSettingsRequest;
-use App\Hamada\Settings\Models\Setting;
+use Hamada\Settings\Models\Setting;
 use App\Http\Controllers\Controller;
 
 
@@ -18,18 +18,37 @@ class SettingsController extends Controller
 {
 
     /**
-     * Display a listing of the settings.
+     * Display a listing of the settings with optional filtering by group.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $settings = Setting::all();
+        $group = request()->query('group');
+        
+        $settings = $group 
+            ? Setting::where('group', $group)->get() 
+            : Setting::all();
+        
         return response()->json(
             [
                 'settings' => $settings,
             ]
         );
+    }
+
+
+    /**
+     * Display the specified setting.
+     *
+     * @param  \App\Hamada\Settings\Models\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Setting $setting)
+    {
+        return response()->json([
+            'setting' => $setting,
+        ]);
     }
 
     /**
