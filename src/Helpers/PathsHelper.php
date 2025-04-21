@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\File;
 class PathsHelper
 {
 
+    private static ?string $publishedMigration = null;
+
     public static function createMigrationFileName(): string
     {
         // Generate a timestamp for the migration file name
@@ -41,6 +43,10 @@ class PathsHelper
 
     public static function getPublishedMigration(): ?string
     {
+        if (self::$publishedMigration) {
+            return self::$publishedMigration;
+        }
+
         $migrationDirectory = database_path('migrations');
 
         // Get the list of migration files in the migrations directory
@@ -52,6 +58,7 @@ class PathsHelper
         })->first();
 
         // Return the name of the published migration
-        return $publishedMigration ? $publishedMigration->getFilename() : null;
+        self::$publishedMigration =  $publishedMigration ? $publishedMigration->getFilename() : null;
+        return self::$publishedMigration;
     }
 }
