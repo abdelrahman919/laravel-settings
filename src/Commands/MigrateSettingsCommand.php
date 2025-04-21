@@ -11,7 +11,7 @@ class MigrateSettingsCommand extends Command
 
     public function handle()
     {
-        $migration = PathsHelper::getMigrationsPath();
+        $migration = PathsHelper::getPublishedMigration();
         if(!$migration) {
             $this->error('Migration file not found, please publish the package first.');
             return;
@@ -21,7 +21,5 @@ class MigrateSettingsCommand extends Command
             '--path' => 'vendor/vendorname/packagename/database/migrations/' . $migration, 
             '--realpath' => true
         ]);
-
-        $this->info('Settings table migration run successfully.');
     }
 }

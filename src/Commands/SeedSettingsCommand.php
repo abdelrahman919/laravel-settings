@@ -14,7 +14,5 @@ class SeedSettingsCommand extends Command
         $this->call('db:seed', [
             '--class' => SettingsSeeder::class,
         ]);
-
-        $this->info('Settings table seeded successfully.');
     }
 }
