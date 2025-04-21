@@ -25,7 +25,7 @@ class SettingsController extends Controller
     {
         $group = request()->query('group');
         
-        $settings = Settings::getAllgetAllSettings($group);
+        $settings = Settings::getAllSettings($group);
         
         return response()->json(
             [
