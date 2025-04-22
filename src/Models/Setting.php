@@ -32,8 +32,28 @@ class Setting extends Model
         return $decodedArray['value'];
     }
 
+
+    /**
+     * Set the value attribute for the setting.
+     *
+     * This method ensures that the provided value matches the expected type
+     * defined by the `type` property of the model. If the types do not match,
+     * an InvalidArgumentException is thrown.
+     * The value is then encoded as JSON and stored in the `value` attribute.
+     *
+     * @param mixed $value The value to be set for the setting.
+     * 
+     * @throws \InvalidArgumentException If the type of the provided value does not match the expected type.
+     */
     public function setValueAttribute($value)
     {
+        $expectedType = $this->type;
+        $actualType = gettype($value);
+
+        if ($expectedType !== $actualType) {
+            throw new \InvalidArgumentException("Invalid type for setting {$this->key}. Expected {$expectedType}, got {$actualType}");
+        }
+
         $this->attributes['value'] = json_encode(['value' => $value]);
     }
 }
